@@ -1,0 +1,15 @@
+*,body,main {
+  margin:0;
+  padding:0;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+
+.min-form-height {
+  min-height: 350px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
