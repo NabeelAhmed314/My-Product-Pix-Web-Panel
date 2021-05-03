@@ -1,132 +1,130 @@
 <template>
   <v-card width="50%" min-height="350px" class="mx-auto my-10 py-7 text-center">
-    <v-card-title>Coming Soon...</v-card-title>
-    <!--    <div class="text-h5 mb-2">Post To instagram</div>-->
-    <!--    <div v-if="!loading" class="mb-2">-->
-    <!--      <CircularImagePicker-->
-    <!--        v-model="imageFile"-->
-    <!--        :image="sendImage"-->
-    <!--        icon="mdi-image-plus"-->
-    <!--        icon-color="#C80000"-->
-    <!--        @input="sendImage = $event"-->
-    <!--      />-->
-    <!--    </div>-->
-    <!--    <v-progress-circular-->
-    <!--      v-if="loading"-->
-    <!--      indeterminate-->
-    <!--      color="#313F53"-->
-    <!--      class="my-auto mx-0"-->
-    <!--    ></v-progress-circular>-->
-    <!--    <v-form v-if="!loading" ref="form" class="form-div mx-auto">-->
-    <!--      <ul-->
-    <!--        v-if="errors.length"-->
-    <!--        style="color: red; margin-bottom: 15px; text-align: left"-->
-    <!--      >-->
-    <!--        <li v-for="(error, i) of errors" :key="i">-->
-    <!--          {{ error }}-->
-    <!--        </li>-->
-    <!--      </ul>-->
-    <!--      <ul-->
-    <!--        v-if="success"-->
-    <!--        style="color: green; margin-bottom: 15px; text-align: left"-->
-    <!--      >-->
-    <!--        <li>Account Created Successfully</li>-->
-    <!--      </ul>-->
-    <!--      <v-container>-->
-    <!--        <v-row>-->
-    <!--          <v-col cols="12">-->
-    <!--            <v-text-field-->
-    <!--              v-model="person.name"-->
-    <!--              color="primary"-->
-    <!--              label="Name"-->
-    <!--              placeholder="John Doe"-->
-    <!--              :rules="[required]"-->
-    <!--              dense-->
-    <!--            ></v-text-field>-->
-    <!--          </v-col>-->
-    <!--        </v-row>-->
-    <!--        <v-btn-->
-    <!--          x-large-->
-    <!--          block-->
-    <!--          class="white&#45;&#45;text rounded-md my-2"-->
-    <!--          color="primary"-->
-    <!--          elevation="2"-->
-    <!--          @click="register"-->
-    <!--          >Post-->
-    <!--        </v-btn>-->
-    <!--      </v-container>-->
-    <!--    </v-form>-->
+    <div class="text-h5 mb-2">Post To instagram</div>
+    <div v-if="code && accessToken()">
+      <p>You Are Logged In and can post to instagram</p>
+      <v-form v-if="!loading" ref="form" class="form-div mx-auto">
+        <ul
+          v-if="errors.length"
+          style="color: red; margin-bottom: 15px; text-align: left"
+        >
+          <li v-for="(error, i) of errors" :key="i">
+            {{ error }}
+          </li>
+        </ul>
+        <v-container>
+          <v-row>
+            <v-col cols="12">
+              <v-text-field
+                color="primary"
+                label="Caption"
+                :rules="[required]"
+                dense
+              ></v-text-field>
+            </v-col>
+            <v-col>
+              <vue-upload-multiple-image
+                :data-images="imageData"
+                class="my-3"
+                drag-text="Drag images (many)"
+                browse-text="(or) Select Upto Five"
+                primary-text="Default"
+                mark-is-primary-text="Set as default"
+                popup-text="This image will be displayed as default"
+                drop-text="Drop your file here ..."
+                @upload-success="uploadImageSuccess"
+                @before-remove="beforeRemove"
+                @edit-image="editImage"
+              />
+            </v-col>
+          </v-row>
+          <v-btn
+            x-large
+            block
+            class="white--text rounded-md my-2"
+            color="primary"
+            elevation="2"
+            @click="post"
+            >Post
+          </v-btn>
+        </v-container>
+      </v-form>
+    </div>
+    <div v-else>
+      <p>
+        You are not logged in to facebook. Kindly Click the button below to log
+        in with facebook.
+      </p>
+      <a v-if="loginBtn" :href="loginBtn.request.responseURL">
+        <v-btn color="primary">Login With Facebook</v-btn>
+      </a>
+    </div>
   </v-card>
 </template>
 
 <script>
-import { Person } from '@/models/person'
+import {
+  getAccount,
+  getAccountMedia,
+  getUserAccount,
+} from '@/common/utils/instagram'
+import VueUploadMultipleImage from 'vue-upload-multiple-image'
 import {
   required,
   emailValidator,
   phoneValidator,
   lengthValidator,
 } from '@/common/utils/validators'
-import { userRole } from '@/common/utils/local-data'
 
 export default {
   name: 'InstagramForm',
+  components: { VueUploadMultipleImage },
+  props: {
+    facebookAppId: {
+      type: String,
+      default: 'null',
+    },
+    code: {
+      type: String,
+      default: null,
+    },
+    loginBtn: {
+      type: Object,
+      default: null,
+    },
+  },
   data() {
     return {
       loading: false,
       success: false,
       errors: [],
-      person: new Person(),
-      showPassword: false,
-      showConfirmPassword: false,
-      confirmPassword: '',
-      imageFile: null,
-      sendImage: null,
+      user: null,
+      businessAccount: null,
+      media: null,
+      imageData: [],
     }
+  },
+  mounted() {
+    this.getUser()
   },
   methods: {
     required,
     emailValidator,
     phoneValidator,
     lengthValidator,
-    userRole,
-    async register() {
-      console.log('inside submit')
+    getAccount,
+    accessToken() {
+      return window.localStorage.getItem('accessToken')
+    },
+    post() {
       if (this.$refs.form.validate()) {
         try {
           this.loading = true
           this.errors = []
-          if (this.person.password !== this.confirmPassword) {
-            this.loading = false
-            this.errors.push('Could not confirm password.')
-            return
-          }
-          const formData = new FormData()
-          for (const key of Object.keys(this.person)) {
-            if (this.person[key] !== undefined) {
-              if (
-                key === 'interests' ||
-                key === 'characters' ||
-                key === 'films'
-              ) {
-                continue
-              } else {
-                formData.append(key, this.person[key])
-              }
-            }
-          }
-          if (this.sendImage) {
-            formData.append('image', this.sendImage)
-          }
-          formData.append('role', userRole('Admin').toString())
-          await this.$axios.post('persons', formData)
-          formData.forEach((item) => console.log(item))
-          this.person = new Person()
-          this.confirmPassword = ''
-          this.sendImage = null
-          this.imageFile = null
+          this.errors.push(
+            'You need Advance Permissions in order to post to Instagram Business Account.'
+          )
           this.loading = false
-          this.success = true
         } catch (err) {
           this.loading = false
           if (err.response) {
@@ -136,6 +134,26 @@ export default {
           }
         }
       }
+    },
+    uploadImageSuccess(formData) {},
+    beforeRemove(index, done) {
+      const r = confirm('Remove image?')
+      if (r === true) {
+        done()
+      }
+    },
+    editImage(formData, index, fileList) {
+      window.console.log('edit data', formData, index, fileList)
+    },
+    async getUser() {
+      const user = await getAccount()
+      this.user = user.data.data[0]
+      const business = await getUserAccount(this.user.id)
+      this.businessAccount = business.data
+      const media = await getAccountMedia(
+        this.businessAccount.instagram_business_account.id
+      )
+      this.media = media.data.data
     },
   },
 }

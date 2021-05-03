@@ -96,6 +96,13 @@ export default {
     },
   },
 
+  env: {
+    facebookAppId: '293954698861866',
+    facebookAppSecret: 'a7a015af9eb9c3f1ae85bdc6f0c9edc8',
+    facebookAppRedirectUri: 'https://login.myproductpix.com/admin/instagram',
+    scope: 'instagram_basic,pages_show_list',
+  },
+
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
@@ -123,7 +130,7 @@ export default {
     },
   },
   server: {
-    port: 80,
+    port: 8080,
     host: '0.0.0.0',
   },
   /*

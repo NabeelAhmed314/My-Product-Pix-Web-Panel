@@ -60,7 +60,10 @@ export default {
         {
           action: 'mdi-instagram',
           title: 'Instagram',
-          to: '/admin/instagram',
+          to:
+            window.localStorage.getItem('code') !== null
+              ? '/admin/instagram?code=' + window.localStorage.getItem('code')
+              : '/admin/instagram',
         },
         {
           action: 'mdi-bell-outline',

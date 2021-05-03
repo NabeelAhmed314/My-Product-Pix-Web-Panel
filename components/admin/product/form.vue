@@ -152,6 +152,12 @@
         <vue-upload-multiple-image
           class="my-3"
           :data-images="imageData"
+          drag-text="Drag images (many)"
+          browse-text="(or) Select Upto Five"
+          primary-text="Default"
+          mark-is-primary-text="Set as default"
+          popup-text="This image will be displayed as default"
+          drop-text="Drop your file here ..."
           @upload-success="uploadImageSuccess"
           @before-remove="beforeRemove"
           @edit-image="editImage"

@@ -25,8 +25,9 @@ export default {
   methods: {
     async logout() {
       try {
+        window.localStorage.clear()
         await this.$auth.logout()
-        location.reload()
+        location.href('/')
       } catch (err) {}
     },
   },
