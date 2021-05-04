@@ -174,7 +174,16 @@
           color="green"
           aria-hidden="true"
           @click="detailItem(item)"
-          >mdi-clipboard
+          >mdi-clipboard-outline
+        </v-icon>
+        <v-icon
+          v-if="send"
+          style="margin: 5px"
+          size="20"
+          color="green"
+          aria-hidden="true"
+          @click="sendItem(item)"
+          >mdi-arrow-right-circle-outline
         </v-icon>
         <v-icon
           v-if="review"
@@ -192,7 +201,7 @@
           color="green"
           aria-hidden="true"
           @click="approveItem(item)"
-          >mdi-check-circle
+          >mdi-check-circle-outline
         </v-icon>
         <v-icon
           v-if="reject"
@@ -201,7 +210,7 @@
           color="red"
           aria-hidden="true"
           @click="rejectItem(item)"
-          >mdi-close-circle
+          >mdi-close-circle-outline
         </v-icon>
         <v-icon
           v-if="change"
@@ -210,7 +219,7 @@
           color="green"
           aria-hidden="true"
           @click="changeItem(item)"
-          >mdi-pencil
+          >mdi-pencil-outline
         </v-icon>
         <v-icon
           v-if="remove"
@@ -219,7 +228,7 @@
           color="red"
           aria-hidden="true"
           @click="removeItem(item)"
-          >mdi-delete
+          >mdi-delete-outline
         </v-icon>
         <v-icon
           v-if="block"
@@ -228,7 +237,7 @@
           color="red"
           aria-hidden="true"
           @click="blockItem(item)"
-          >mdi-block-helper
+          >mdi-block-helper-outline
         </v-icon>
         <v-icon
           v-if="unblock"
@@ -237,7 +246,7 @@
           color="green"
           aria-hidden="true"
           @click="unblockItem(item)"
-          >mdi-check
+          >mdi-check-outline
         </v-icon>
         <v-icon
           v-if="productPrint"
@@ -246,7 +255,7 @@
           color="green"
           aria-hidden="true"
           @click="printProduct(item)"
-          >mdi-widgets
+          >mdi-widgets-outline
         </v-icon>
       </template>
     </v-data-table>
@@ -299,11 +308,26 @@ export default defineComponent({
       required: true,
     },
 
-    onBlock: Function,
-    onUnblock: Function,
-    onAccepted: Function,
-    onRejected: Function,
-    onDelete: Function,
+    onBlock: {
+      type: Function,
+      default: () => {},
+    },
+    onUnblock: {
+      type: Function,
+      default: () => {},
+    },
+    onAccepted: {
+      type: Function,
+      default: () => {},
+    },
+    onRejected: {
+      type: Function,
+      default: () => {},
+    },
+    onDelete: {
+      type: Function,
+      default: () => {},
+    },
 
     /**
      * Options or additional action that need to be
@@ -349,6 +373,10 @@ export default defineComponent({
     },
 
     detail: {
+      type: Boolean,
+      default: false,
+    },
+    send: {
       type: Boolean,
       default: false,
     },
@@ -436,6 +464,11 @@ export default defineComponent({
       default: null,
       required: false,
     },
+    sendRoute: {
+      type: String,
+      default: null,
+      required: false,
+    },
     reviewRoute: {
       type: String,
       default: null,
@@ -509,7 +542,6 @@ export default defineComponent({
     }
 
     function handlePrintEvent() {
-      console.log('in print')
       window.open(this.$axios.defaults.baseURL + props.pdfRoute)
     }
 
@@ -519,7 +551,7 @@ export default defineComponent({
         const r = await context.root.$axios.$delete(
           props.removeRoute.replace('$id', item._id)
         )
-        console.log(r)
+        window.console.log(r)
         loader.data.value.splice(loader.data.value.indexOf(item), 1)
         if (this.onDelete() != null) {
           this.onDelete()
@@ -604,6 +636,13 @@ export default defineComponent({
         )
       }
     }
+    function sendItem(item) {
+      if (this.send) {
+        context.root.$options.router.push(
+          props.sendRoute.replace('$id', item._id)
+        )
+      }
+    }
 
     function reviewItem(item) {
       if (this.review) {
@@ -630,6 +669,7 @@ export default defineComponent({
       returnBack,
       changeItem,
       detailItem,
+      sendItem,
       blockItem,
       approveItem,
       rejectItem,

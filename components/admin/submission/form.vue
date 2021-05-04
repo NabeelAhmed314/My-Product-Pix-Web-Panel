@@ -36,7 +36,16 @@
           item-text="name"
           placeholder="e.g. Assigned User"
           dense
-        ></v-select>
+        >
+          <template #no-data>
+            <span>
+              <p style="margin: 0 5px 0 0; text-align: right">
+                No Users Found for this products theme.
+                <span style="cursor: pointer" @click="getAll">Get All</span>
+              </p>
+            </span>
+          </template>
+        </v-select>
         <label>Product</label>
         <v-select
           v-model="
@@ -44,7 +53,7 @@
             submission.product
           "
           :rules="[required]"
-          :readonly="isUpdate"
+          :readonly="isUpdate || singleProduct"
           :items="products"
           item-text="name"
           item-value="_id"
@@ -112,6 +121,14 @@ export default {
       type: Submission,
       default: () => new Submission(),
     },
+    singleProduct: {
+      type: Boolean,
+      default: false,
+    },
+    productId: {
+      type: String,
+      default: null,
+    },
   },
   data() {
     return {
@@ -121,6 +138,9 @@ export default {
   },
   mounted() {
     this.getData()
+    if (this.singleProduct) {
+      this.selectProduct()
+    }
   },
   methods: {
     required,
@@ -128,8 +148,20 @@ export default {
       this.$router.back()
     },
     async getData() {
-      this.users = await this.$axios.$get('/persons/customers')
+      if (this.singleProduct) {
+        this.users = await this.$axios.$get(
+          '/persons/match-interests/' + this.productId
+        )
+      } else {
+        this.users = await this.$axios.$get('/persons/customers')
+      }
       this.products = await this.$axios.$get('/products')
+    },
+    async getAll() {
+      this.users = await this.$axios.$get('/persons/customers')
+    },
+    selectProduct() {
+      this.submission.product = this.productId
     },
     formData() {
       console.log(this.submission)

@@ -3,7 +3,6 @@
     <DataViewer
       title="Product Reviews"
       :columns="columns"
-      dense
       back
       :endpoint="'/reviews/product/' + id"
       detail

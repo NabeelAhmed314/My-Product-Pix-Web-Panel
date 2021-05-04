@@ -3,7 +3,6 @@
     <DataViewer
       title="My Products"
       :columns="columns"
-      dense
       :endpoint="'/products/brand/' + this.$auth.user._id"
       detail
       detail-route="/brand/my-product/detail/$id"

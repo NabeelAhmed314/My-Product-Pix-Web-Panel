@@ -3,7 +3,6 @@
     <DataViewer
       title="Products"
       :columns="columns"
-      dense
       endpoint="/products"
       create
       create-route="/admin/product/add"
@@ -11,6 +10,8 @@
       change-route="/admin/product/edit/$id"
       remove
       remove-route="/products/$id"
+      send
+      send-route="/admin/product/send/$id"
       :on-delete="onDelete"
     />
     <v-snackbar

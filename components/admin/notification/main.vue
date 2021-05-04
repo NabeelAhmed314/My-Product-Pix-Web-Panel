@@ -3,7 +3,6 @@
     <DataViewer
       title="Notifications"
       :columns="columns"
-      dense
       endpoint="/notifications"
       create
       create-route="/admin/notification/add"

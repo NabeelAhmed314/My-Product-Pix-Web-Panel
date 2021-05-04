@@ -46,6 +46,18 @@
           placeholder="e.g. #mk007"
           dense
         ></v-text-field>
+        <label>ASIN</label>
+        <v-text-field
+          v-model="
+            // eslint-disable-next-line vue/no-mutating-props
+            product.asin
+          "
+          class="my-3"
+          :rules="[required]"
+          single-line
+          placeholder="e.g. #mk007"
+          dense
+        ></v-text-field>
         <label>Description</label>
         <v-textarea
           v-model="
@@ -77,6 +89,8 @@
           class="my-3"
           :value="product.brand"
           dense
+          :search-input.sync="searchBrand"
+          :value-comparator="(a, b) => a && b && a._id === b._id"
           item-text="name"
           item-value="_id"
           single-line
@@ -88,7 +102,19 @@
               product.brand = data._id
             }
           "
-        ></v-autocomplete>
+        >
+          <template #no-data>
+            <span>
+              <p
+                style="margin: 0 5px 0 0; text-align: right; cursor: pointer"
+                @click="openBrandForm()"
+              >
+                <v-icon>mdi-plus-circle</v-icon>
+                Add Brand
+              </p>
+            </span>
+          </template>
+        </v-autocomplete>
         <label>Category</label>
         <v-autocomplete
           :items="categories"
@@ -108,6 +134,19 @@
             }
           "
         ></v-autocomplete>
+        <label>Theme</label>
+        <v-combobox
+          v-model="product.theme"
+          multiple
+          append-icon=""
+          chips
+          deletable-chips
+          single-line
+          :search-input.sync="search"
+          dense
+          @paste="updateTags"
+        >
+        </v-combobox>
         <label>Media</label>
         <div v-if="isUpdate && product.images.length > 0">
           <p>Uploaded Images</p>
@@ -171,13 +210,62 @@
         style="object-fit: cover"
       />
     </v-dialog>
+    <v-dialog v-model="addBrand" width="800px">
+      <SimpleForm
+        :data="brand"
+        endpoint="persons"
+        method="post"
+        title="Add Brand"
+        @response="selectBrand"
+      >
+        <div class="span-2">
+          <v-card style="padding: 20px; margin-bottom: 30px; box-shadow: none">
+            <v-text-field
+              v-model="brand.name"
+              :rules="[required]"
+              style="align-items: center !important"
+              label="Name"
+              dense
+            ></v-text-field>
+            <v-text-field
+              v-model="brand.username"
+              :rules="[required, emailValidator]"
+              style="align-items: center !important"
+              label="Email"
+              dense
+            ></v-text-field>
+            <v-text-field
+              v-model="brand.phone"
+              style="align-items: center !important"
+              label="Phone"
+              dense
+            ></v-text-field>
+            <v-text-field
+              v-model="brand.password"
+              :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+              :type="showPassword ? 'text' : 'password'"
+              :rules="[required]"
+              label="Password"
+              dense
+              @click:append="showPassword = !showPassword"
+            ></v-text-field>
+          </v-card>
+        </div>
+      </SimpleForm>
+    </v-dialog>
   </v-container>
 </template>
 
 <script>
-import { required } from '@/common/utils/validators'
+import {
+  required,
+  lengthValidator,
+  emailValidator,
+} from '@/common/utils/validators'
 import { Product } from '@/models/product'
 import VueUploadMultipleImage from 'vue-upload-multiple-image'
+import { Person } from '@/models/person'
+import { userRole } from '@/common/utils/local-data'
 import SimpleForm from '../../../common/ui/widgets/SimpleForm'
 export default {
   name: 'ProductForm',
@@ -211,6 +299,11 @@ export default {
     src: '',
     categories: [],
     brands: [],
+    search: '',
+    searchBrand: '',
+    brand: new Person(),
+    addBrand: false,
+    showPassword: false,
   }),
   mounted() {
     this.getCategories()
@@ -218,8 +311,29 @@ export default {
   },
   methods: {
     required,
+    lengthValidator,
+    emailValidator,
     returnBack() {
       this.$router.back()
+    },
+    updateTags() {
+      this.$nextTick(() => {
+        this.select.push(...this.search.split(','))
+        this.$nextTick(() => {
+          this.search = ''
+        })
+      })
+    },
+    selectBrand(data) {
+      console.log('here')
+      this.getBrands()
+      console.log(data.data._id)
+      this.product.brand = data.data._id
+      console.log(this.product)
+      this.addBrand = !this.addBrand
+      console.log(this.addBrand)
+      this.brand = new Person()
+      this.brand.password = ''
     },
     async getCategories() {
       this.categories = await this.$axios.$get('/category/active')
@@ -232,7 +346,11 @@ export default {
       for (const key of Object.keys(this.product)) {
         if (key === 'images') continue
         else if (key === '_id' && !this.isUpdate) continue
-        else {
+        else if (key === 'theme') {
+          for (const i of this.product[key]) {
+            formData.append(key, i)
+          }
+        } else {
           formData.append(key, this.product[key])
         }
       }
@@ -280,6 +398,11 @@ export default {
         this.src = i
         this.imagePreview = true
       }
+    },
+    openBrandForm() {
+      this.brand.role = userRole('Brand')
+      this.brand.name = this.searchBrand
+      this.addBrand = !this.addBrand
     },
   },
 }

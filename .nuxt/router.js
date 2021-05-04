@@ -35,6 +35,7 @@ const _0ffb99a6 = () => interopDefault(import('..\\pages\\brand\\my-product\\rev
 const _2cd2f145 = () => interopDefault(import('..\\pages\\admin\\brand\\edit\\_id.vue' /* webpackChunkName: "pages/admin/brand/edit/_id" */))
 const _77b9b7b4 = () => interopDefault(import('..\\pages\\admin\\category\\edit\\_id.vue' /* webpackChunkName: "pages/admin/category/edit/_id" */))
 const _0ae879dd = () => interopDefault(import('..\\pages\\admin\\product\\edit\\_id.vue' /* webpackChunkName: "pages/admin/product/edit/_id" */))
+const _7cb633c2 = () => interopDefault(import('..\\pages\\admin\\product\\send\\_id.vue' /* webpackChunkName: "pages/admin/product/send/_id" */))
 const _21864ab1 = () => interopDefault(import('..\\pages\\admin\\submission\\detail\\_id.vue' /* webpackChunkName: "pages/admin/submission/detail/_id" */))
 const _a329cdd0 = () => interopDefault(import('..\\pages\\admin\\submission\\edit\\_id.vue' /* webpackChunkName: "pages/admin/submission/edit/_id" */))
 const _2329fd12 = () => interopDefault(import('..\\pages\\admin\\user\\detail\\_id.vue' /* webpackChunkName: "pages/admin/user/detail/_id" */))
@@ -180,6 +181,10 @@ export const routerOptions = {
     path: "/admin/product/edit/:id?",
     component: _0ae879dd,
     name: "admin-product-edit-id"
+  }, {
+    path: "/admin/product/send/:id?",
+    component: _7cb633c2,
+    name: "admin-product-send-id"
   }, {
     path: "/admin/submission/detail/:id?",
     component: _21864ab1,

@@ -3,7 +3,6 @@
     <DataViewer
       title="Brands"
       :columns="columns"
-      dense
       endpoint="/persons/brands"
       create
       create-route="/admin/brand/add"

@@ -3,7 +3,6 @@
     <DataViewer
       title="Users"
       :columns="columns"
-      dense
       endpoint="/persons/customers"
       detail
       detail-route="/admin/user/detail/$id"

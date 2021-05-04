@@ -3,7 +3,6 @@
     <DataViewer
       title="Categories"
       :columns="columns"
-      dense
       endpoint="/category"
       create
       create-route="/admin/category/add"

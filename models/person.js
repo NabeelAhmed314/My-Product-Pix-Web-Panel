@@ -13,4 +13,5 @@ export class Person {
   style = undefined
   films = undefined
   characters = undefined
+  role = undefined
 }

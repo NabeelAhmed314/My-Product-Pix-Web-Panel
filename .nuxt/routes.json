@@ -217,6 +217,13 @@
     "_name": "_0ae879dd"
   },
   {
+    "name": "admin-product-send-id",
+    "path": "/admin/product/send/:id?",
+    "component": "C:\\\\Users\\\\Nabeel\\\\Documents\\\\OFFICE\\\\NUXT\\\\My Product Pix\\\\my-product-pix\\\\pages\\\\admin\\\\product\\\\send\\\\_id.vue",
+    "chunkName": "pages/admin/product/send/_id",
+    "_name": "_7cb633c2"
+  },
+  {
     "name": "admin-submission-detail-id",
     "path": "/admin/submission/detail/:id?",
     "component": "C:\\\\Users\\\\Nabeel\\\\Documents\\\\OFFICE\\\\NUXT\\\\My Product Pix\\\\my-product-pix\\\\pages\\\\admin\\\\submission\\\\detail\\\\_id.vue",

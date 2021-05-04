@@ -1,5 +1,7 @@
 <template>
-  <NotificationMain />
+  <v-container>
+    <NotificationMain />
+  </v-container>
 </template>
 
 <script>
