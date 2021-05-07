@@ -17,6 +17,7 @@
 <script>
 import CustomerMenuItems from '@/components/drawer/customer-menu'
 import BrandMenuItems from '@/components/drawer/brand-menu'
+import { logoutOfFacebook } from '@/common/utils/instagram'
 import AdminMenuItems from '~/components/drawer/admin-menu'
 
 export default {
@@ -25,7 +26,9 @@ export default {
   methods: {
     async logout() {
       try {
+        console.log('logout')
         window.localStorage.clear()
+        await logoutOfFacebook()
         await this.$auth.logout()
         location.href('/')
       } catch (err) {}

@@ -1,3 +1,5 @@
+import path from 'path'
+import fs from 'fs'
 import colors from 'vuetify/es5/util/colors'
 
 export default {
@@ -21,6 +23,12 @@ export default {
           'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js',
       },
       { src: 'https://unpkg.com/vue-chartjs/dist/vue-chartjs.min.js' },
+      {
+        src: 'https://connect.facebook.net/en_US/sdk/debug.js',
+        async: true,
+        crossOrigin: 'anonymous',
+      },
+      { src: '/scripts/fb.js', body: true },
     ],
   },
 
@@ -58,7 +66,7 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // baseURL: 'http://192.168.88.28:3000/',
-    baseURL: 'http://46.101.81.185:3000/',
+    baseURL: 'https://api.myproductpix.com/',
   },
 
   auth: {
@@ -98,9 +106,9 @@ export default {
 
   env: {
     facebookAppId: '293954698861866',
-    facebookAppSecret: 'a7a015af9eb9c3f1ae85bdc6f0c9edc8',
     facebookAppRedirectUri: 'https://login.myproductpix.com/admin/instagram',
-    scope: 'instagram_basic,pages_show_list',
+    scope:
+      'instagram_basic,pages_show_list,instagram_content_publish,pages_read_engagement',
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa

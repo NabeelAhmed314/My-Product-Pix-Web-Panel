@@ -1,80 +1,141 @@
-import axios from 'axios'
-
-export const loginWithFacebook = async (env) => {
-  console.log('Login With Facebook')
-  const params = {
-    client_id: env.facebookAppId,
-    redirect_uri: env.facebookAppRedirectUri,
-    scope: env.scope,
-  }
-  const response = await axios({
-    method: 'get',
-    url: 'https://www.facebook.com/v10.0/dialog/oauth',
-    params,
+export const getLoginStatus = () => {
+  const returnObj = {}
+  // eslint-disable-next-line no-undef
+  FB.getLoginStatus(function (response) {
+    if (
+      response.status === 'connected' &&
+      window.localStorage.getItem('instaID') != null
+    ) {
+      returnObj.message = 'You can post to instagram.'
+      returnObj.status = true
+    } else {
+      returnObj.message = 'Login to facebook account'
+      returnObj.status = false
+    }
   })
-  return response
+  return returnObj
 }
 
-export const getAccessToken = async (env) => {
-  console.log('Get Access Code')
-  const params = {
-    client_id: env.facebookAppId,
-    redirect_uri: env.facebookAppRedirectUri,
-    client_secret: env.facebookAppSecret,
-    code: window.localStorage.getItem('code'),
-  }
-  console.log(params)
-  const response = await axios({
-    method: 'get',
-    url: 'https://graph.facebook.com/v10.0/oauth/access_token',
-    params,
+export const loginWithFacebook = (env) => {
+  const returnObj = {}
+  return new Promise((resolve) => {
+    // eslint-disable-next-line no-undef
+    FB.login(
+      function (response) {
+        if (response.status === 'connected') {
+          // eslint-disable-next-line no-undef
+          FB.api('/me/accounts', function (response) {
+            if (response.data.length > 0) {
+              // eslint-disable-next-line no-undef
+              FB.api(
+                '/' + response.data[0].id,
+                { fields: 'instagram_business_account' },
+                function (response) {
+                  if (response.instagram_business_account) {
+                    window.localStorage.setItem(
+                      'instaID',
+                      response.instagram_business_account.id
+                    )
+                    returnObj.message = 'You can post now!'
+                    returnObj.status = true
+                    resolve(returnObj)
+                  } else {
+                    returnObj.message =
+                      'We could not found any instagram business account'
+                    returnObj.status = false
+                    resolve(returnObj)
+                  }
+                }
+              )
+            } else {
+              returnObj.message = 'We could not found any linked accounts'
+              returnObj.status = false
+              resolve(returnObj)
+            }
+          })
+        } else {
+          returnObj.message = response.status
+          returnObj.status = false
+          resolve(returnObj)
+        }
+      },
+      { scope: env.scope }
+    )
   })
-  console.log(response)
-  return response
+}
+export const logoutOfFacebook = () => {
+  // eslint-disable-next-line no-undef
+  FB.logout()
 }
 
-export const getAccount = async () => {
-  console.log('Get Account')
-  const params = {
-    access_token: window.localStorage.getItem('accessToken'),
-  }
-  console.log(params)
-  const response = await axios({
-    method: 'get',
-    url: 'https://graph.facebook.com/v10.0/me/accounts',
-    params,
+export const createInstagramPost = (imageUrl, caption) => {
+  const returnObj = {}
+  return new Promise((resolve) => {
+    // eslint-disable-next-line no-undef
+    FB.api(
+      '/' + window.localStorage.getItem('instaID') + '/media',
+      'post',
+      {
+        image_url: imageUrl,
+        caption,
+      },
+      function (response) {
+        if (response.id) {
+          // eslint-disable-next-line no-undef
+          FB.api(
+            '/' + window.localStorage.getItem('instaID') + '/media_publish',
+            'post',
+            {
+              creation_id: response.id,
+            },
+            function (response) {
+              if (response.id) {
+                returnObj.message = 'Post Created Successfully'
+                returnObj.status = true
+                resolve(returnObj)
+              } else {
+                returnObj.message = response.error.error_user_msg
+                returnObj.status = false
+                resolve(returnObj)
+              }
+            }
+          )
+        } else {
+          returnObj.message = response.error.error_user_msg
+          returnObj.status = false
+          resolve(returnObj)
+        }
+      }
+    )
   })
-  console.log(response)
-  return response
 }
 
-export const getUserAccount = async (id) => {
-  console.log('Get User Account')
-  const params = {
-    access_token: window.localStorage.getItem('accessToken'),
-    fields: 'instagram_business_account',
-  }
-  console.log(params)
-  const response = await axios({
-    method: 'get',
-    url: 'https://graph.facebook.com/v10.0/' + id,
-    params,
+export const instagramLimit = () => {
+  console.log('limit')
+  return new Promise((resolve) => {
+    // eslint-disable-next-line no-undef
+    FB.api(
+      '/' +
+        window.localStorage.getItem('instaID') +
+        '/content_publishing_limit',
+      { fields: 'quota_usage,config' },
+      function (response) {
+        console.log(response)
+        if (response.data.length > 0) {
+          const obj = {
+            total: response.data[0].config.quota_total,
+            remaining:
+              response.data[0].config.quota_total -
+              response.data[0].quota_usage,
+          }
+          resolve(obj)
+        } else {
+          const obj = {
+            error: true,
+          }
+          resolve(obj)
+        }
+      }
+    )
   })
-  console.log(response)
-  return response
-}
-
-export const getAccountMedia = async (id) => {
-  console.log('Get User Account Media')
-  const params = {
-    access_token: window.localStorage.getItem('accessToken'),
-  }
-  console.log(params)
-  const response = await axios({
-    method: 'get',
-    url: 'https://graph.facebook.com/v10.0/' + id + '/media',
-    params,
-  })
-  console.log(response)
-  return response
 }
