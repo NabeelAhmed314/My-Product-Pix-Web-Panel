@@ -186,7 +186,8 @@ export default {
             formData
           )
           console.log(response)
-          const url = this.$axios.defaults.baseURL + '/uploads/' + response.data
+          const url =
+            this.$axios.defaults.baseURL + '/uploads/' + response.data.name
           const responsePost = await createInstagramPost(url, this.caption)
           console.log(responsePost)
           if (responsePost.status) {

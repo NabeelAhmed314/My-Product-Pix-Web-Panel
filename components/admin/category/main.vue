@@ -9,6 +9,7 @@
       change
       change-route="/admin/category/edit/$id"
       remove
+      is-not-delete
       remove-route="/category/$id"
       :on-delete="onDelete"
     />

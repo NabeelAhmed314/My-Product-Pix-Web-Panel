@@ -98,7 +98,7 @@ export default {
                 .then((result) => {
                   console.log(result)
                   resolve(
-                    this.$axios.defaults.baseURL + 'uploads/' + result.data
+                    this.$axios.defaults.baseURL + 'uploads/' + result.data.name
                   )
                 })
                 .catch((error) => {
@@ -121,11 +121,11 @@ export default {
       console.log(this.myQuill.root.innerHTML)
       this.mail.html = this.myQuill.root.innerHTML
       console.log(this.mail)
-      location.reload()
       return this.mail
     },
     clear() {
       this.mail = new Mail()
+      this.myQuill.root.innerHTML = ''
     },
   },
 }

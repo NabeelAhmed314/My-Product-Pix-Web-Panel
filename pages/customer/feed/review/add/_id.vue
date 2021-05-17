@@ -1,12 +1,12 @@
 <template>
-  <FeedDetail :feed="feed" />
+  <ReviewForm :feed="feed" />
 </template>
 
 <script>
-import FeedDetail from '@/components/customer/feed/detail'
+import ReviewForm from '@/components/customer/feed/review/form'
 export default {
-  name: 'Id',
-  components: { FeedDetail },
+  name: 'Add',
+  components: { ReviewForm },
   async asyncData({ $axios, route }) {
     return {
       feed: await $axios.$get('submissions/' + route.params.id),

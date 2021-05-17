@@ -38,11 +38,6 @@ export default {
           to: '/customer/family',
         },
         {
-          action: 'mdi-heart-outline',
-          title: 'Favorites',
-          to: '/customer/favorite',
-        },
-        {
           action: 'mdi-lock-outline',
           title: 'Security',
           to: '/auth/change-password',

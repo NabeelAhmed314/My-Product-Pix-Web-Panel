@@ -6,6 +6,8 @@
       endpoint="/persons/customers"
       detail
       detail-route="/admin/user/detail/$id"
+      family
+      family-route="/admin/user/family/$id"
     />
   </div>
 </template>

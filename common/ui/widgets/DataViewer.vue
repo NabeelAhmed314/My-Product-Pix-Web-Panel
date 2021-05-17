@@ -55,7 +55,7 @@
       <!--        </v-sheet>-->
       <!--      </v-bottom-sheet>-->
 
-      <v-btn aria-hidden="true" icon @click="load">
+      <v-btn id="reload-btn" aria-hidden="true" icon @click="load">
         <v-icon aria-hidden="true">mdi-reload</v-icon>
       </v-btn>
     </v-card-title>
@@ -175,6 +175,15 @@
           aria-hidden="true"
           @click="detailItem(item)"
           >mdi-clipboard-outline
+        </v-icon>
+        <v-icon
+          v-if="family"
+          style="margin: 5px"
+          size="20"
+          color="green"
+          aria-hidden="true"
+          @click="familyItem(item)"
+          >mdi-account-multiple-outline
         </v-icon>
         <v-icon
           v-if="send"
@@ -371,7 +380,6 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
-
     detail: {
       type: Boolean,
       default: false,
@@ -408,6 +416,10 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    family: {
+      type: Boolean,
+      default: false,
+    },
 
     /**
      * Determines if the account can create remove items
@@ -416,6 +428,10 @@ export default defineComponent({
      * @since 1.0.0
      */
     remove: {
+      type: Boolean,
+      default: false,
+    },
+    isNotDelete: {
       type: Boolean,
       default: false,
     },
@@ -460,6 +476,11 @@ export default defineComponent({
     },
 
     detailRoute: {
+      type: String,
+      default: null,
+      required: false,
+    },
+    familyRoute: {
       type: String,
       default: null,
       required: false,
@@ -540,25 +561,24 @@ export default defineComponent({
     function handleCreateEvent() {
       context.root.$options.router.push(props.createRoute)
     }
-
     function handlePrintEvent() {
       window.open(this.$axios.defaults.baseURL + props.pdfRoute)
     }
-
     async function removeItem(item) {
-      window.console.log(item)
       if (confirm('Are you sure?')) {
-        const r = await context.root.$axios.$delete(
+        await context.root.$axios.$delete(
           props.removeRoute.replace('$id', item._id)
         )
-        window.console.log(r)
-        loader.data.value.splice(loader.data.value.indexOf(item), 1)
+        if (!props.isNotDelete) {
+          loader.data.value.splice(loader.data.value.indexOf(item), 1)
+        } else {
+          await loader.load()
+        }
         if (this.onDelete() != null) {
           this.onDelete()
         }
       }
     }
-
     async function approveItem(item) {
       window.console.log(item)
       if (confirm('Are you sure?')) {
@@ -573,7 +593,6 @@ export default defineComponent({
         }
       }
     }
-
     async function rejectItem(item) {
       if (confirm('Are you sure?')) {
         const data = {
@@ -587,7 +606,6 @@ export default defineComponent({
         }
       }
     }
-
     async function blockItem(item) {
       window.console.log(item)
       if (confirm('Are you sure?')) {
@@ -600,7 +618,6 @@ export default defineComponent({
         }
       }
     }
-
     async function unblockItem(item) {
       window.console.log(item)
       if (confirm('Are you sure?')) {
@@ -618,21 +635,25 @@ export default defineComponent({
         props.productPrintRoute.replace('$id', item.date)
       )
     }
-
     function returnBack() {
       this.$router.back()
     }
-
     function changeItem(item) {
       context.root.$options.router.push(
         props.changeRoute.replace('$id', item._id)
       )
     }
-
     function detailItem(item) {
       if (this.detail) {
         context.root.$options.router.push(
           props.detailRoute.replace('$id', item._id)
+        )
+      }
+    }
+    function familyItem(item) {
+      if (this.detail) {
+        context.root.$options.router.push(
+          props.familyRoute.replace('$id', item._id)
         )
       }
     }
@@ -643,7 +664,6 @@ export default defineComponent({
         )
       }
     }
-
     function reviewItem(item) {
       if (this.review) {
         context.root.$options.router.push(
@@ -651,7 +671,6 @@ export default defineComponent({
         )
       }
     }
-
     function getCountdown(item) {
       if (item.status === 0)
         return moment().to(moment(item.createdAt).add(3, 'days')).toUpperCase()
@@ -672,6 +691,7 @@ export default defineComponent({
       sendItem,
       blockItem,
       approveItem,
+      familyItem,
       rejectItem,
       date: (date) => moment(date).format('MMMM Do YYYY'),
       handleCreateEvent,

@@ -44,9 +44,12 @@
           dense
         ></v-textarea>
         <label>Recipients</label>
-        <v-checkbox v-model="notification.all" label="Send to All"></v-checkbox>
+        <v-checkbox
+          v-model="notification.type"
+          label="Send to All"
+        ></v-checkbox>
         <EntitySelector
-          v-if="!notification.all"
+          v-if="!notification.type"
           endpoint="persons/customers"
           :selection="customers"
           multiple
@@ -125,11 +128,17 @@ export default {
         console.log(this.notification[key])
         if (key === 'image') continue
         else if (key === 'persons') {
-          if (this.notification.all !== true) {
+          if (this.notification.type !== true) {
             for (const person in this.notification[key]) {
               console.log(this.notification[key][person]._id)
               formData.append('persons', this.notification[key][person]._id)
             }
+          }
+        } else if (key === 'type') {
+          if (this.notification[key]) {
+            formData.append(key, 1)
+          } else {
+            formData.append(key, 0)
           }
         } else {
           formData.append(key, this.notification[key])

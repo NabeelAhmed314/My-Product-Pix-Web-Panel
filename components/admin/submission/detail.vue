@@ -23,7 +23,7 @@
             }}</v-card-subtitle>
           </div>
         </div>
-        <div class="d-flex px-3 pt-3">
+        <div v-if="isAdmin" class="d-flex px-3 pt-3">
           <v-avatar size="90" class="elevation-3 rounded-xl">
             <img
               v-if="submission.person.image"
@@ -43,7 +43,13 @@
         </div>
         <div class="px-3 pt-3">
           <div class="text-h6 pa-2">Photos & Videos</div>
-          <v-container class="elevation-3">
+          <v-container
+            v-if="
+              (review.images || review.videos) &&
+              (review.images.length > 0 || review.videos.length > 0)
+            "
+            class="elevation-3"
+          >
             <div class="image-carousal">
               <div
                 v-for="(image, i) of review.images"
@@ -80,6 +86,9 @@
                   style="object-fit: cover"
                   width="120"
                   height="120"
+                  :poster="
+                    $axios.defaults.baseURL + 'uploads/' + video.thumbnail.name
+                  "
                   :src="$axios.defaults.baseURL + 'uploads/' + video.name"
                   alt="itemImage"
                 />
@@ -182,7 +191,10 @@
           </div>
           <div v-else class="px-3">Not Yet Reviewed</div>
         </div>
-        <div v-if="review && submission.status === 1" class="px-3 pt-3">
+        <div
+          v-if="review && submission.status === 1 && isAdmin"
+          class="px-3 pt-3"
+        >
           <v-row>
             <v-col cols="12" md="6">
               <v-btn block color="primary" x-large @click="rejectItem"
@@ -254,6 +266,10 @@ export default {
     review: {
       type: Review,
       default: null,
+    },
+    isAdmin: {
+      type: Boolean,
+      default: true,
     },
   },
   data() {

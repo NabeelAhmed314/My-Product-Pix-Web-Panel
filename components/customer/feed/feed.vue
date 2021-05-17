@@ -3,15 +3,15 @@
     <div v-if="submissions.length > 0" class="d-flex pb-3">
       <v-spacer />
       <v-avatar rounded class="elevation-1">
-        <v-icon @click="toggle">{{
+        <v-icon v-if="this.$vuetify.breakpoint.mdAndUp" @click="toggle">{{
           isGrid ? 'mdi-format-list-bulleted-square' : 'mdi-view-grid-outline'
         }}</v-icon>
       </v-avatar>
     </div>
     <v-row v-if="submissions.length > 0">
       <v-col
-        v-for="submission of submissions"
-        :key="submission"
+        v-for="(submission, i) of submissions"
+        :key="i"
         cols="12"
         :md="md"
         style="cursor: pointer"
@@ -22,7 +22,7 @@
         >
           <div class="d-flex pa-4">
             <v-icon
-              v-if="submission.status !== 0"
+              v-if="submission.status !== 0 && submission.status !== 1"
               :color="submission.status === 2 ? 'green' : 'primary'"
               style="position: absolute; top: 20px; right: 20px"
               >{{

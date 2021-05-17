@@ -95,7 +95,7 @@ export default {
         labels: ['Assigned', 'Reviewed'],
         datasets: [
           {
-            backgroundColor: ['lightBlue', '#8C9EFF'],
+            backgroundColor: ['#8fcbfb', '#8C9EFF'],
             data: [],
           },
         ],
@@ -104,7 +104,7 @@ export default {
         labels: ['Positive', 'Neutral', 'Negative'],
         datasets: [
           {
-            backgroundColor: ['lightGreen', 'grey', '#EF9A9A'],
+            backgroundColor: ['#a7e8bc', '#7b7e84', '#EF9A9A'],
             data: [],
           },
         ],

@@ -42,9 +42,8 @@ export default {
       this.assigned = await this.$axios.$get(
         'submissions/status/0/' + this.$auth.user._id
       )
-      console.log(this.assigned)
       this.reviewed = await this.$axios.$get(
-        'submissions/status/4/' + this.$auth.user._id
+        'submissions/status/5/' + this.$auth.user._id
       )
     },
   },

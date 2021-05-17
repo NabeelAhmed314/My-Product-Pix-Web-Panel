@@ -1,5 +1,5 @@
-import path from 'path'
-import fs from 'fs'
+// import path from 'path'
+// import * as fs from 'fs'
 import colors from 'vuetify/es5/util/colors'
 
 export default {
@@ -61,11 +61,33 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     '@nuxtjs/auth',
+    [
+      '@nuxtjs/firebase',
+      {
+        config: {
+          apiKey: 'AIzaSyCqeMQ35pILpsPx_5oYs389iUZZ5E8XCEM',
+          authDomain: 'my-product-pix.firebaseapp.com',
+          projectId: 'my-product-pix',
+          storageBucket: 'my-product-pix.appspot.com',
+          messagingSenderId: '609307620775',
+          appId: '1:609307620775:web:26eb267581df0b0723b282',
+          measurementId: 'G-89X9D3SZHE',
+        },
+        services: {
+          messaging: true, // {
+          // createServiceWorker: true,
+          // fcmPublicVapidKey:
+          //   'BI80sjfiBiTXyVX-EvFelLEAtkzHbz8EgJuS0aktNjeY1yhZOVIozXzvNMOCBmU7Q2h6rJVNik_HB0bsnCudAgM',
+          // inject: fs.readFileSync('./serviceWorker.js'),
+          // },
+        },
+      },
+    ],
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    // baseURL: 'http://192.168.88.28:3000/',
+    // baseURL: 'http://192.168.100.9:5000/',
     baseURL: 'https://api.myproductpix.com/',
   },
 
@@ -99,7 +121,7 @@ export default {
     redirect: {
       login: '/auth/signin',
       logout: '/',
-      callback: '/signin',
+      callback: '/auth/signin',
       home: '/',
     },
   },
@@ -140,6 +162,10 @@ export default {
   server: {
     port: 8080,
     host: '0.0.0.0',
+    // https: {
+    //   key: fs.readFileSync(path.resolve(__dirname, 'server.key')),
+    //   cert: fs.readFileSync(path.resolve(__dirname, 'server.crt')),
+    // },
   },
   /*
    ** Build configuration
