@@ -85,12 +85,10 @@ export default {
             username: this.signin.username,
             password: this.signin.password,
           }
-          console.log(dataSend)
-          const result = await this.$auth.loginWith('local', {
+          await this.$auth.loginWith('local', {
             data: dataSend,
           })
           this.loading = false
-          console.log(result)
         } catch (err) {
           this.loading = false
           window.console.log(err)

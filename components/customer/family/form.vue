@@ -196,8 +196,6 @@ export default {
           this.errors = []
           const formData = new FormData()
           for (const key of Object.keys(this.family)) {
-            console.log(key)
-            console.log(this.family[key])
             if (
               key === 'interests' ||
               key === 'characters' ||
@@ -213,7 +211,6 @@ export default {
             formData.append('image', this.sendImage)
           }
           if (!this.isUpdate) formData.append('person', this.$auth.user._id)
-          formData.forEach((item) => console.log(item))
           if (this.isUpdate) await this.$axios.patch('family', formData)
           else await this.$axios.post('family', formData)
 

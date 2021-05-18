@@ -12,6 +12,7 @@
               height="100%"
               :src="selectedUrl"
               style="object-fit: cover"
+              alt="feed"
             />
           </div>
           <div
@@ -48,6 +49,7 @@
                     cursor: pointer;
                     object-fit: cover;
                   "
+                  alt="slide"
                   @click="changeSelected(slide)"
                 />
               </div>

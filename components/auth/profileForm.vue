@@ -65,7 +65,7 @@
             placeholder="johndoe@gmail.com"
             dense
           ></v-text-field>
-          <div v-if="this.$auth.user.role === this.userRole('Customer')">
+          <div v-if="$auth.user.role === userRole('Customer')">
             <label>Address</label>
             <v-text-field
               v-model="person.address"
@@ -234,7 +234,6 @@ export default {
           if (this.sendImage) {
             formData.append('image', this.sendImage)
           }
-          formData.forEach((item) => console.log(item))
           await this.$axios.patch('persons', formData)
           await this.$auth.fetchUser()
           this.person = { ...this.$auth.user }

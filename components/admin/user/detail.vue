@@ -155,7 +155,6 @@ export default {
     }
   },
   async mounted() {
-    console.log(this.user)
     this.loader = true
     await this.getReviewImages()
     this.loader = false
@@ -168,15 +167,12 @@ export default {
       this.reviewImages = await this.$axios.$get(
         '/reviews/media/' + this.user._id
       )
-      console.log(this.reviewImages)
       this.images = this.reviewImages.media.slice(0, this.reviewImages.count)
       // for (let i = 0; i < this.reviewImages.count; i++) {
-      console.log(this.images)
       this.videos = this.reviewImages.media.slice(
         this.reviewImages.count,
         this.reviewImages.media.length
       )
-      console.log(this.videos)
     },
   },
 }

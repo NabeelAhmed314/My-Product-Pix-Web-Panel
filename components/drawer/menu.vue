@@ -1,7 +1,7 @@
 <template>
   <div>
-    <AdminMenuItems v-if="this.$auth.user.role === 0" />
-    <CustomerMenuItems v-else-if="this.$auth.user.role === 2" />
+    <AdminMenuItems v-if="$auth.user.role === 0" />
+    <CustomerMenuItems v-else-if="$auth.user.role === 2" />
     <BrandMenuItems v-else />
     <v-list-item ripple dense @click="logout">
       <v-list-item-action>
@@ -26,7 +26,6 @@ export default {
   methods: {
     async logout() {
       try {
-        console.log('logout')
         window.localStorage.clear()
         await logoutOfFacebook()
         await this.$auth.logout()

@@ -33,6 +33,7 @@
               ><v-icon v-if="!person.image">mdi-image</v-icon>
               <img
                 v-else
+                alt="person"
                 :src="$axios.defaults.baseURL + 'uploads/' + person.image.name"
                 style="object-fit: cover; object-position: center"
             /></v-avatar>

@@ -49,7 +49,9 @@
         >
           <template #[`item.consumption`]="{ item }">
             <slot name="consumption" :bind="item">
+              <label for="consumption" class="d-none">Hidden</label>
               <select
+                id="consumption"
                 v-model="item.consumption"
                 aria-hidden="true"
                 style="width: 100%"
@@ -134,6 +136,7 @@ export default defineComponent({
     },
     map: {
       type: Function,
+      default: null,
     },
   },
 

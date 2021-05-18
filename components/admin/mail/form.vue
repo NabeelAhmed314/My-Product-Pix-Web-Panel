@@ -96,14 +96,12 @@ export default {
               this.$axios
                 .post('/persons/save-image', formData)
                 .then((result) => {
-                  console.log(result)
                   resolve(
                     this.$axios.defaults.baseURL + 'uploads/' + result.data.name
                   )
                 })
                 .catch((error) => {
-                  alert('Upload failed')
-                  console.error('Error:', error)
+                  window.console.log(error)
                 })
             })
           },
@@ -117,10 +115,7 @@ export default {
   methods: {
     required,
     formData() {
-      console.log(this.mail)
-      console.log(this.myQuill.root.innerHTML)
       this.mail.html = this.myQuill.root.innerHTML
-      console.log(this.mail)
       return this.mail
     },
     clear() {

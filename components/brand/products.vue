@@ -3,7 +3,7 @@
     <DataViewer
       title="My Products"
       :columns="columns"
-      :endpoint="'/products/brand/' + this.$auth.user._id"
+      :endpoint="'/products/brand/' + $auth.user._id"
       detail
       detail-route="/brand/my-product/detail/$id"
       review

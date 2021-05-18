@@ -58,6 +58,7 @@ export default {
     },
     message: {
       type: String,
+      default: '',
     },
   },
   methods: {

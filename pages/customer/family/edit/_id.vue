@@ -1,7 +1,7 @@
 <template>
   <div>
     <div style="position: absolute; top: 30px; left: 30px">
-      <v-icon @click="() => this.$router.back()">mdi-arrow-left</v-icon>
+      <v-icon @click="() => $router.back()">mdi-arrow-left</v-icon>
     </div>
     <FamilyForm title="Edit Family Profile" is-update :family="family" />
   </div>

@@ -104,15 +104,13 @@
           "
         >
           <template #no-data>
-            <span>
-              <p
-                style="margin: 0 5px 0 0; text-align: right; cursor: pointer"
-                @click="openBrandForm()"
-              >
-                <v-icon>mdi-plus-circle</v-icon>
-                Add Brand
-              </p>
-            </span>
+            <p
+              style="margin: 0 5px 0 0; text-align: right; cursor: pointer"
+              @click="openBrandForm()"
+            >
+              <v-icon>mdi-plus-circle</v-icon>
+              Add Brand
+            </p>
           </template>
         </v-autocomplete>
         <label>Category</label>
@@ -325,13 +323,9 @@ export default {
       })
     },
     selectBrand(data) {
-      console.log('here')
       this.getBrands()
-      console.log(data.data._id)
       this.product.brand = data.data._id
-      console.log(this.product)
       this.addBrand = !this.addBrand
-      console.log(this.addBrand)
       this.brand = new Person()
       this.brand.password = ''
     },

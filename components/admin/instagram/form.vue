@@ -19,8 +19,8 @@
       <div v-if="logged">
         <v-form v-if="!loading" ref="form" class="form-div mx-auto">
           <ul v-if="errors.length" style="color: red; margin-bottom: 15px">
-            <li v-for="(error, i) of errors" :key="i">
-              {{ error }}
+            <li v-for="(error1, i) of errors" :key="i">
+              {{ error1 }}
             </li>
           </ul>
           <v-container>
@@ -37,8 +37,17 @@
                 ></v-text-field>
               </v-col>
               <v-col>
-                <label>Media</label>
+                <label
+                  >Media
+                  <v-icon
+                    v-if="getSrc() !== null"
+                    color="primary"
+                    @click="removeSrc"
+                    >mdi-delete</v-icon
+                  ></label
+                >
                 <vue-upload-multiple-image
+                  v-if="!ext"
                   :data-images="imageData"
                   class="my-3"
                   :max-image="1"
@@ -51,6 +60,15 @@
                   @upload-success="uploadImageSuccess"
                   @before-remove="beforeRemove"
                   @edit-image="editImage"
+                />
+                <img
+                  v-else
+                  alt="person"
+                  class="rounded-lg"
+                  width="100%"
+                  height="85%"
+                  style="object-fit: cover"
+                  :src="$axios.defaults.baseURL + 'uploads/' + getSrc()"
                 />
               </v-col>
             </v-row>
@@ -118,6 +136,7 @@ export default {
       logged: null,
       caption: null,
       limit: null,
+      ext: false,
     }
   },
   async mounted() {
@@ -130,7 +149,6 @@ export default {
     required,
     uploadImageSuccess(formData) {
       this.image = []
-      console.log(formData)
       formData.forEach((item) => this.image.push(item))
     },
     beforeRemove(index, done) {
@@ -142,10 +160,16 @@ export default {
     editImage(formData, index, fileList) {
       window.console.log('edit data', formData, index, fileList)
     },
+    getSrc() {
+      const data = window.localStorage.getItem('shareSrc')
+      if (data !== null) {
+        this.ext = true
+      }
+      return data
+    },
     async login() {
       this.loading = true
       const response = await loginWithFacebook(this.env)
-      console.log(response)
       this.logged = response.status
       if (response.status) {
         await this.getLimit()
@@ -160,7 +184,6 @@ export default {
     },
     async getLoginStatus() {
       const response = await getLoginStatus()
-      console.log(response)
       this.logged = response.status
       if (response.status) {
         this.error = null
@@ -171,25 +194,25 @@ export default {
       }
     },
     async postInsta() {
-      console.log(this.image)
       const formData = new FormData()
       this.errors = []
       if (this.$refs.form.validate()) {
         this.loading = true
         try {
-          for (const image of this.image) {
-            formData.append('image', image)
-          }
+          let url
+          let response
+          if (this.image.length > 0) {
+            for (const image of this.image) {
+              formData.append('image', image)
+            }
 
-          const response = await this.$axios.post(
-            'persons/save-image',
-            formData
-          )
-          console.log(response)
-          const url =
-            this.$axios.defaults.baseURL + '/uploads/' + response.data.name
+            response = await this.$axios.post('persons/save-image', formData)
+            url =
+              this.$axios.defaults.baseURL + '/uploads/' + response.data.name
+          } else {
+            url = this.$axios.defaults.baseURL + '/uploads/' + this.getSrc()
+          }
           const responsePost = await createInstagramPost(url, this.caption)
-          console.log(responsePost)
           if (responsePost.status) {
             this.error = null
             this.success = responsePost.message
@@ -197,7 +220,10 @@ export default {
             this.success = null
             this.error = responsePost.message
           }
-          await this.$axios.post('persons/delete-image/' + response.data)
+          if (response) {
+            await this.$axios.post('persons/delete-image/' + response.data.name)
+          }
+          window.localStorage.removeItem('shareSrc')
           this.caption = null
           this.imageData = []
           this.image = []
@@ -215,10 +241,13 @@ export default {
         }
       }
     },
+    removeSrc() {
+      window.localStorage.removeItem('shareSrc')
+      this.ext = false
+    },
     async getLimit() {
       const response = await instagramLimit()
       this.limit = response.remaining + '/' + response.total
-      console.log(this.limit)
     },
   },
 }

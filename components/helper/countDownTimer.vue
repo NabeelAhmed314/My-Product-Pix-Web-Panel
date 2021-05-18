@@ -56,6 +56,7 @@ export default {
   props: {
     date: {
       type: String,
+      default: '',
     },
   },
   data() {
@@ -75,7 +76,6 @@ export default {
     if (minutes <= 9) minutes = '0' + minutes
     const endResult = days + hours + minutes
     this.timer = endResult.toString().split('')
-    console.log(endResult.toString().split(''))
     this.interval = setInterval(() => {
       const now = Math.trunc(new Date().getTime() / 1000)
       const milli = Math.trunc(Date.parse(this.date) / 1000)
@@ -87,7 +87,6 @@ export default {
       if (minutes <= 9) minutes = '0' + minutes
       const endResult = days + hours + minutes
       this.timer = endResult.toString().split('')
-      console.log(endResult.toString().split(''))
     }, 60000)
   },
   destroyed() {

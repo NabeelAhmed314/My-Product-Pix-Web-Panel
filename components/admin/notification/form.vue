@@ -124,13 +124,10 @@ export default {
     formData() {
       const formData = new FormData()
       for (const key of Object.keys(this.notification)) {
-        console.log(key)
-        console.log(this.notification[key])
         if (key === 'image') continue
         else if (key === 'persons') {
           if (this.notification.type !== true) {
             for (const person in this.notification[key]) {
-              console.log(this.notification[key][person]._id)
               formData.append('persons', this.notification[key][person]._id)
             }
           }

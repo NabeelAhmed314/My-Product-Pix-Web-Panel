@@ -2,8 +2,8 @@
   <v-container>
     <div v-if="submissions.length > 0" class="d-flex pb-3">
       <v-spacer />
-      <v-avatar rounded class="elevation-1">
-        <v-icon v-if="this.$vuetify.breakpoint.mdAndUp" @click="toggle">{{
+      <v-avatar v-if="$vuetify.breakpoint.mdAndUp" rounded class="elevation-1">
+        <v-icon @click="toggle">{{
           isGrid ? 'mdi-format-list-bulleted-square' : 'mdi-view-grid-outline'
         }}</v-icon>
       </v-avatar>
@@ -41,6 +41,7 @@
               >
               <img
                 v-else
+                alt="submission"
                 :src="
                   $axios.defaults.baseURL +
                   'uploads/' +

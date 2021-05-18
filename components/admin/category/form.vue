@@ -75,7 +75,6 @@ export default {
       this.$router.back()
     },
     formData() {
-      console.log(this.category)
       return this.category
     },
   },

@@ -6,7 +6,7 @@
       >
         <div class="overlay"></div>
         <div class="logo">
-          <img src="../../assets/images/logo.png" width="115" />
+          <img alt="logo" src="../../assets/images/logo.png" width="115" />
         </div>
       </div>
       <div class="main-form">

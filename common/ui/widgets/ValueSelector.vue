@@ -9,7 +9,7 @@
     :rules="[(v) => !!v || !required || 'Value is required']"
     @change="asd"
   >
-    <template v-slot:append-item>
+    <template #append-item>
       <v-progress-circular
         v-if="state.loading"
         width="2"
@@ -19,10 +19,10 @@
       />
       <v-icon v-else> mdi-chevron-bottom</v-icon>
     </template>
-    <template v-slot:selection="{ item }">
+    <template #selection="{ item }">
       <slot name="item" v-bind="item" />
     </template>
-    <template v-slot:item="{ item }">
+    <template #item="{ item }">
       <slot name="item" v-bind="item" />
     </template>
   </v-select>
@@ -37,23 +37,23 @@ export default defineComponent({
   props: {
     label: {
       type: String,
-      required: true
+      required: true,
     },
     endpoint: {
       type: String,
-      required: true
+      required: true,
     },
     required: {
       type: Boolean,
-      required: false
-    }
+      required: false,
+    },
   },
 
   setup(props, context) {
     const state = reactive({
       data: [],
       value: null,
-      loading: true
+      loading: true,
     })
 
     async function load() {
@@ -79,7 +79,7 @@ export default defineComponent({
     }
 
     return { load, state, asd }
-  }
+  },
 })
 </script>
 

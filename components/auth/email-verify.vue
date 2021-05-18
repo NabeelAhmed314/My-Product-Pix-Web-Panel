@@ -2,7 +2,7 @@
   <div class="d-flex justify-center my-6">
     <v-card width="70%">
       <v-card-title>Email Verification</v-card-title>
-      <v-card-text v-if="this.$auth.user.isVerified"
+      <v-card-text v-if="$auth.user.isVerified"
         >Your Email is verified!</v-card-text
       >
       <div v-else>

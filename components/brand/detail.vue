@@ -1,6 +1,6 @@
 <template>
   <v-container class="d-flex justify-center align-center fill-height">
-    <SimpleForm :has-submit="false">
+    <SimpleForm :has-submit="false" data endpoint="">
       <template #header>
         <v-row>
           <v-col

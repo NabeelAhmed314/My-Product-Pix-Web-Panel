@@ -234,7 +234,6 @@ export default {
       })
     },
     async signup() {
-      console.log('inside submit')
       if (this.$refs.form.validate()) {
         try {
           this.loading = true
@@ -265,12 +264,10 @@ export default {
           }
           formData.append('role', userRole('Customer').toString())
           await this.$axios.post('persons', formData)
-          formData.forEach((item) => console.log(item))
           const user = {
             username: this.person.username,
             password: this.person.password,
           }
-          console.log(user)
           await this.$auth.loginWith('local', { data: user })
           location.href = '/'
         } catch (err) {

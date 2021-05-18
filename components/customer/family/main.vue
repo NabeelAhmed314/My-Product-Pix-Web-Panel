@@ -18,7 +18,6 @@ export default {
   methods: {
     async getFamily() {
       this.family = await this.$axios.$get('family/from/' + this.$auth.user._id)
-      console.log(this.family)
     },
   },
 }

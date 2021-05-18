@@ -80,7 +80,6 @@ export default {
       this.$router.push('/')
     },
     async forgotPassword() {
-      console.log('here')
       if (this.$refs.form.validate()) {
         try {
           this.loading = true

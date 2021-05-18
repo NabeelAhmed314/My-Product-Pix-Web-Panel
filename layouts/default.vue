@@ -1,16 +1,22 @@
 <template>
   <v-app>
-    <v-navigation-drawer v-model="drawer" fixed clipped-left app>
+    <v-navigation-drawer
+      v-model="drawer"
+      fixed
+      clipped-left
+      app
+      style="z-index: 100"
+    >
       <v-list>
         <DrawerHeader />
         <Menu />
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar fixed app dense>
+    <v-app-bar fixed app dense style="z-index: 99">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-spacer />
       <v-menu
-        v-if="this.$auth.user.role !== userRole('Admin')"
+        v-if="$auth.user.role !== userRole('Admin')"
         offset-y
         bottom
         transition="slide-y-transition"

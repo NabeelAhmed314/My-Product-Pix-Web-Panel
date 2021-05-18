@@ -111,7 +111,6 @@ export const createInstagramPost = (imageUrl, caption) => {
 }
 
 export const instagramLimit = () => {
-  console.log('limit')
   return new Promise((resolve) => {
     // eslint-disable-next-line no-undef
     FB.api(
@@ -120,7 +119,6 @@ export const instagramLimit = () => {
         '/content_publishing_limit',
       { fields: 'quota_usage,config' },
       function (response) {
-        console.log(response)
         if (response.data.length > 0) {
           const obj = {
             total: response.data[0].config.quota_total,

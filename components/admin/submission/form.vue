@@ -38,12 +38,12 @@
           dense
         >
           <template #no-data>
-            <span>
-              <p style="margin: 0 5px 0 0; text-align: right">
+            <p style="margin: 0 5px 0 0; text-align: right">
+              <span>
                 No Users Found for this products theme.
                 <span style="cursor: pointer" @click="getAll">Get All</span>
-              </p>
-            </span>
+              </span>
+            </p>
           </template>
         </v-select>
         <label>Product</label>
@@ -164,7 +164,6 @@ export default {
       this.submission.product = this.productId
     },
     formData() {
-      console.log(this.submission)
       return this.submission
     },
   },

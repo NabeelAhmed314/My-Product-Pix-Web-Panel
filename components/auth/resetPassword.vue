@@ -69,6 +69,7 @@ export default {
   props: {
     hash: {
       type: String,
+      default: '',
     },
   },
   data() {
@@ -87,7 +88,6 @@ export default {
       this.$router.push('/')
     },
     async resetPassword() {
-      console.log('here')
       if (this.$refs.form.validate()) {
         try {
           this.loading = true

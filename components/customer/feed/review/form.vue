@@ -8,8 +8,9 @@
             <v-avatar size="90" class="elevation-3 rounded-xl">
               <img
                 v-if="feed.product.images.length >= 1"
+                alt="feedProduct"
                 :src="
-                  this.$axios.defaults.baseURL +
+                  $axios.defaults.baseURL +
                   'uploads/' +
                   feed.product.images[0].name
                 "
@@ -107,7 +108,6 @@
                       video.thumbnail.name
                     "
                     :src="$axios.defaults.baseURL + 'uploads/' + video.name"
-                    alt="itemImage"
                   />
                   <div class="image-overlay">
                     <v-btn
@@ -323,7 +323,6 @@ export default {
             this.loading = false
             this.errors.push('Kindly add a minimum of three pictures')
           } else {
-            console.log(this.review)
             this.review.submission = this.feed._id
             if (!this.isUpdate) {
               await this.$axios.post('reviews', this.review)
@@ -335,7 +334,6 @@ export default {
           }
         } catch (err) {
           this.loading = false
-          window.console.log(err)
           if (err.response) {
             this.errors.push(err.response.data.message)
           } else {
@@ -348,7 +346,6 @@ export default {
       document.getElementById('fileUpload').click()
     },
     upload(files) {
-      console.log('upload selected files')
       this.total += files.length
       files.forEach((item) => {
         this.uploadLoader = true
@@ -360,8 +357,8 @@ export default {
               this.review.images.push(response.data)
             })
             .catch((err) => {
+              window.console.log(err)
               this.uploadLoader = false
-              console.log(err)
             })
         } else if (item.type.includes('video')) {
           const canvas = document.createElement('canvas')
@@ -381,12 +378,6 @@ export default {
                 resolve(blob)
               })
             })
-            // const blob = canvas.toBlob(function (blob) {
-            //   return new Promise((resolve, reject) => {
-            //     resolve(blob)
-            //   })
-            // })
-            console.log(blob)
             UploadFilesService.upload(blob, this.$axios)
               .then((response) => {
                 const obj = {
@@ -401,13 +392,13 @@ export default {
                     this.review.videos.push(obj)
                   })
                   .catch((err) => {
+                    window.console.log(err)
                     this.uploadLoader = false
-                    console.log(err)
                   })
               })
               .catch((err) => {
+                window.console.log(err)
                 this.uploadLoader = false
-                console.log(err)
               })
           }
         }

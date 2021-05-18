@@ -18,6 +18,7 @@
       v-if="imageData"
       :src="imageData"
       style="object-fit: cover; object-position: center"
+      alt="picker"
     />
     <img
       v-if="!imageData && image_"

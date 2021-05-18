@@ -66,6 +66,11 @@ export default {
               : '/admin/instagram',
         },
         {
+          action: 'mdi-image-outline',
+          title: 'Media',
+          to: '/admin/media',
+        },
+        {
           action: 'mdi-bell-outline',
           title: 'Notifications',
           to: '/admin/notification',

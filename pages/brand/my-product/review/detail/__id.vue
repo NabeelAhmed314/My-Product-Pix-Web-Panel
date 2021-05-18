@@ -9,9 +9,7 @@ export default {
   components: { SubmissionDetail },
   async asyncData({ $axios, route }) {
     const review = await $axios.$get('reviews/' + route.params._id)
-    console.log(route.params._id)
     const submission = review.submission
-    console.log(submission)
     return {
       review,
       submission,

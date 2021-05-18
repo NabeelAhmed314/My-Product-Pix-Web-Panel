@@ -144,7 +144,6 @@ export default {
       if (this.sendImage) {
         formData.append('image', this.sendImage)
       }
-      formData.forEach((item) => console.log(item))
       return formData
     },
   },

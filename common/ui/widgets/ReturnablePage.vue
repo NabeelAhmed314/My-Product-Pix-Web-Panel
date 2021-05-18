@@ -18,23 +18,23 @@
 export default {
   name: 'ReturnablePage',
 
+  beforeRouteEnter(_, from, next) {
+    next((vm) => {
+      vm.from = from
+    })
+  },
+
   data: () => ({
-    from: null
+    from: null,
   }),
 
   methods: {
     goBack() {
       this.$router.push({
-        name: this.from?.name ?? 'dashboard'
+        name: this.from?.name ?? 'dashboard',
       })
-    }
+    },
   },
-
-  beforeRouteEnter(_, from, next) {
-    next((vm) => {
-      vm.from = from
-    })
-  }
 }
 </script>
 

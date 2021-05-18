@@ -7,8 +7,9 @@
           <v-avatar size="90" class="elevation-3 rounded-xl">
             <img
               v-if="submission.product.images.length >= 1"
+              alt="product"
               :src="
-                this.$axios.defaults.baseURL +
+                $axios.defaults.baseURL +
                 'uploads/' +
                 submission.product.images[0].name
               "
@@ -27,8 +28,9 @@
           <v-avatar size="90" class="elevation-3 rounded-xl">
             <img
               v-if="submission.person.image"
+              alt="isAdmin"
               :src="
-                this.$axios.defaults.baseURL +
+                $axios.defaults.baseURL +
                 'uploads/' +
                 submission.person.image.name
               "
@@ -90,7 +92,6 @@
                     $axios.defaults.baseURL + 'uploads/' + video.thumbnail.name
                   "
                   :src="$axios.defaults.baseURL + 'uploads/' + video.name"
-                  alt="itemImage"
                 />
                 <div class="image-overlay">
                   <v-btn

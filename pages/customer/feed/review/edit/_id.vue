@@ -8,7 +8,6 @@ export default {
   name: 'Id',
   components: { ReviewForm },
   async asyncData({ $axios, route }) {
-    console.log(await $axios.$get('reviews/submission/' + route.params.id))
     return {
       feed: await $axios.$get('submissions/' + route.params.id),
       review: await $axios.$get('reviews/submission/' + route.params.id),

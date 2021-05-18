@@ -134,7 +134,6 @@ export default {
     lengthValidator,
     userRole,
     async register() {
-      console.log('inside submit')
       if (this.$refs.form.validate()) {
         try {
           this.loading = true
@@ -163,7 +162,6 @@ export default {
           }
           formData.append('role', userRole('Admin').toString())
           await this.$axios.post('persons', formData)
-          formData.forEach((item) => console.log(item))
           this.person = new Person()
           this.confirmPassword = ''
           this.sendImage = null
