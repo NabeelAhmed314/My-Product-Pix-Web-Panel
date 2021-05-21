@@ -8,12 +8,17 @@ export default {
    ** Headers of the page
    */
   head: {
-    titleTemplate: '%s - my-product-pix',
-    title: 'my-product-pix',
+    titleTemplate: 'My Product Pix',
+    title: 'My Product Pix',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      {
+        hid: 'description',
+        name: 'description',
+        content:
+          'My Product Pix is a web app that is used by people to write reviews for products.',
+      },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     script: [

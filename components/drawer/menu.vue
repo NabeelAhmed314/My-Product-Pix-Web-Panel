@@ -5,10 +5,10 @@
     <BrandMenuItems v-else />
     <v-list-item ripple dense @click="logout">
       <v-list-item-action>
-        <v-icon dense>mdi-logout</v-icon>
+        <v-icon dense color="white">mdi-logout</v-icon>
       </v-list-item-action>
       <v-list-item-content>
-        <v-list-item-title>Logout</v-list-item-title>
+        <v-list-item-title style="color: white">Logout</v-list-item-title>
       </v-list-item-content>
     </v-list-item>
   </div>

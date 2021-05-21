@@ -1,5 +1,24 @@
 <template>
   <div class="align-center justify-center main-div">
+    <div
+      style="
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 250px;
+        border-bottom-left-radius: 100px;
+        border-bottom-right-radius: 100px;
+        overflow: hidden;
+      "
+    >
+      <img
+        height="100%"
+        width="100%"
+        src="~/assets/images/bg-1.png"
+        alt="wave"
+        style="object-fit: fill"
+      />
+    </div>
     <v-card class="d-flex form-card">
       <div class="main-form">
         <v-container
@@ -30,9 +49,6 @@ export default {
 .main-div {
   width: 100%;
   min-width: 320px;
-  background-image: url('/images/bg1.png');
-  background-position: top;
-  background-size: contain;
   padding: 50px 0;
 }
 .main-form {

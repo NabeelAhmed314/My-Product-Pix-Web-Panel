@@ -5,7 +5,11 @@
       fixed
       clipped-left
       app
-      style="z-index: 100"
+      style="
+        z-index: 100;
+        background-image: url('/images/drawer-bg.jpg');
+        background-color: #c80000;
+      "
     >
       <v-list>
         <DrawerHeader />
@@ -69,6 +73,16 @@
     </v-app-bar>
     <v-main>
       <nuxt />
+      <div
+        style="position: absolute; bottom: 0; left: 0; height: 70px; z-index: 0"
+      >
+        <img
+          height="100%"
+          width="100%"
+          src="~/assets/images/bottom-wave.png"
+          alt="wave"
+        />
+      </div>
     </v-main>
   </v-app>
 </template>

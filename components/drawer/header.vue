@@ -1,7 +1,9 @@
 <template>
-  <div style="text-align: center">
+  <div style="text-align: center; color: #ffffff">
     <v-avatar rounded size="80" class="elevation-3">
-      <v-icon v-if="!$auth.user.image">mdi-account-outline</v-icon>
+      <v-icon v-if="!$auth.user.image" color="white"
+        >mdi-account-outline</v-icon
+      >
       <img
         v-else
         alt="user"
