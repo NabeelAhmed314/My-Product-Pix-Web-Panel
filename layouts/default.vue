@@ -72,10 +72,7 @@
       </v-menu>
     </v-app-bar>
     <v-main>
-      <nuxt />
-      <div
-        style="position: absolute; bottom: 0; left: 0; height: 70px; z-index: 0"
-      >
+      <div style="position: absolute; bottom: 0; left: 0; height: 70px">
         <img
           height="100%"
           width="100%"
@@ -83,6 +80,7 @@
           alt="wave"
         />
       </div>
+      <nuxt style="z-index: 2" />
     </v-main>
   </v-app>
 </template>
