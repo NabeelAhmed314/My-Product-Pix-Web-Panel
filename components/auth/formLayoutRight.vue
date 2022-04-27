@@ -5,6 +5,7 @@
         position: absolute;
         top: 0;
         left: 0;
+        width: 100%;
         height: 250px;
         border-bottom-left-radius: 100px;
         border-bottom-right-radius: 100px;
@@ -51,15 +52,18 @@ export default {
   min-width: 320px;
   padding: 50px 0;
 }
+
 .main-form {
   width: 50%;
   min-width: 50%;
 }
+
 @media screen and (max-width: 992px) {
   .main-form {
     min-width: 100%;
   }
 }
+
 .form-card {
   min-height: 500px;
   width: 70%;
@@ -68,6 +72,7 @@ export default {
   overflow: hidden;
   margin: 0 auto;
 }
+
 .div-image {
   min-width: 50%;
   background-image: url('/images/sign-in.jpg');
@@ -76,6 +81,7 @@ export default {
   position: relative;
   border-radius: 0 !important;
 }
+
 .overlay {
   width: 100%;
   height: 100%;
@@ -85,6 +91,7 @@ export default {
   background-color: #c80000;
   opacity: 0.3;
 }
+
 .logo {
   z-index: 1;
 }

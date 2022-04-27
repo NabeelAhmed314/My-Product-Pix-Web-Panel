@@ -92,7 +92,7 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    // baseURL: 'http://192.168.100.9:5000/',
+    // baseURL: 'http://10.20.20.83:4000/',
     baseURL: 'https://api.myproductpix.com/',
   },
 

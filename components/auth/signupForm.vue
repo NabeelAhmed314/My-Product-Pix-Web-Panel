@@ -112,7 +112,7 @@
               v-model="person.style"
               color="primary"
               label="Style"
-              :rules="required"
+              :rules="[required]"
               :items="style"
               dense
             >

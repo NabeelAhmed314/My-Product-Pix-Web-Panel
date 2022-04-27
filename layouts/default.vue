@@ -72,7 +72,15 @@
       </v-menu>
     </v-app-bar>
     <v-main>
-      <div style="position: absolute; bottom: 0; left: 0; height: 70px">
+      <div
+        style="
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          height: 70px;
+          width: 100%;
+        "
+      >
         <img
           height="100%"
           width="100%"

@@ -3,7 +3,14 @@
     <v-main>
       <nuxt />
       <div
-        style="position: absolute; bottom: 0; left: 0; height: 70px; z-index: 0"
+        style="
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          height: 70px;
+          z-index: 0;
+          width: 100%;
+        "
       >
         <img
           height="100%"

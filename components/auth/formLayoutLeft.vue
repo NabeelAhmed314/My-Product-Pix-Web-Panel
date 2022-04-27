@@ -6,6 +6,7 @@
         top: 0;
         left: 0;
         height: 250px;
+        width: 100%;
         border-bottom-left-radius: 100px;
         border-bottom-right-radius: 100px;
         overflow: hidden;

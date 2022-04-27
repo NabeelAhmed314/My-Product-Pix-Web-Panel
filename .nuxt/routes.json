@@ -1,0 +1,345 @@
+[
+  {
+    "name": "admin-brand",
+    "path": "/admin/brand",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\admin\\\\brand\\\\index.vue",
+    "chunkName": "pages/admin/brand/index",
+    "_name": "_2e56ba65"
+  },
+  {
+    "name": "admin-category",
+    "path": "/admin/category",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\admin\\\\category\\\\index.vue",
+    "chunkName": "pages/admin/category/index",
+    "_name": "_4c06228a"
+  },
+  {
+    "name": "admin-dashboard",
+    "path": "/admin/dashboard",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\admin\\\\dashboard\\\\index.vue",
+    "chunkName": "pages/admin/dashboard/index",
+    "_name": "_0a8aa038"
+  },
+  {
+    "name": "admin-instagram",
+    "path": "/admin/instagram",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\admin\\\\instagram\\\\index.vue",
+    "chunkName": "pages/admin/instagram/index",
+    "_name": "_efac774c"
+  },
+  {
+    "name": "admin-mail",
+    "path": "/admin/mail",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\admin\\\\mail\\\\index.vue",
+    "chunkName": "pages/admin/mail/index",
+    "_name": "_6ca4899e"
+  },
+  {
+    "name": "admin-media",
+    "path": "/admin/media",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\admin\\\\media\\\\index.vue",
+    "chunkName": "pages/admin/media/index",
+    "_name": "_356c29e8"
+  },
+  {
+    "name": "admin-notification",
+    "path": "/admin/notification",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\admin\\\\notification\\\\index.vue",
+    "chunkName": "pages/admin/notification/index",
+    "_name": "_551ab17d"
+  },
+  {
+    "name": "admin-product",
+    "path": "/admin/product",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\admin\\\\product\\\\index.vue",
+    "chunkName": "pages/admin/product/index",
+    "_name": "_5f821106"
+  },
+  {
+    "name": "admin-register",
+    "path": "/admin/register",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\admin\\\\register\\\\index.vue",
+    "chunkName": "pages/admin/register/index",
+    "_name": "_260ba7c5"
+  },
+  {
+    "name": "admin-submission",
+    "path": "/admin/submission",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\admin\\\\submission\\\\index.vue",
+    "chunkName": "pages/admin/submission/index",
+    "_name": "_be163008"
+  },
+  {
+    "name": "admin-up-next",
+    "path": "/admin/up-next",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\admin\\\\up-next\\\\index.vue",
+    "chunkName": "pages/admin/up-next/index",
+    "_name": "_58c2f072"
+  },
+  {
+    "name": "admin-user",
+    "path": "/admin/user",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\admin\\\\user\\\\index.vue",
+    "chunkName": "pages/admin/user/index",
+    "_name": "_2381fec6"
+  },
+  {
+    "name": "auth-change-password",
+    "path": "/auth/change-password",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\auth\\\\change-password.vue",
+    "chunkName": "pages/auth/change-password",
+    "_name": "_dccac3ca"
+  },
+  {
+    "name": "auth-email-verify",
+    "path": "/auth/email-verify",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\auth\\\\email-verify.vue",
+    "chunkName": "pages/auth/email-verify",
+    "_name": "_15a525d7"
+  },
+  {
+    "name": "auth-forgotPassword",
+    "path": "/auth/forgotPassword",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\auth\\\\forgotPassword.vue",
+    "chunkName": "pages/auth/forgotPassword",
+    "_name": "_48a7c1ab"
+  },
+  {
+    "name": "auth-profile",
+    "path": "/auth/profile",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\auth\\\\profile.vue",
+    "chunkName": "pages/auth/profile",
+    "_name": "_ea2b7ba8"
+  },
+  {
+    "name": "auth-signin",
+    "path": "/auth/signin",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\auth\\\\signin.vue",
+    "chunkName": "pages/auth/signin",
+    "_name": "_1bd7f522"
+  },
+  {
+    "name": "auth-signup",
+    "path": "/auth/signup",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\auth\\\\signup.vue",
+    "chunkName": "pages/auth/signup",
+    "_name": "_06aa5be5"
+  },
+  {
+    "name": "brand-my-product",
+    "path": "/brand/my-product",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\brand\\\\my-product\\\\index.vue",
+    "chunkName": "pages/brand/my-product/index",
+    "_name": "_09890502"
+  },
+  {
+    "name": "customer-family",
+    "path": "/customer/family",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\customer\\\\family\\\\index.vue",
+    "chunkName": "pages/customer/family/index",
+    "_name": "_147e9fbb"
+  },
+  {
+    "name": "customer-favorite",
+    "path": "/customer/favorite",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\customer\\\\favorite\\\\index.vue",
+    "chunkName": "pages/customer/favorite/index",
+    "_name": "_8e46757a"
+  },
+  {
+    "name": "customer-feed",
+    "path": "/customer/feed",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\customer\\\\feed\\\\index.vue",
+    "chunkName": "pages/customer/feed/index",
+    "_name": "_d11512fe"
+  },
+  {
+    "name": "customer-profile",
+    "path": "/customer/profile",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\customer\\\\profile\\\\index.vue",
+    "chunkName": "pages/customer/profile/index",
+    "_name": "_2d3a258c"
+  },
+  {
+    "name": "admin-brand-add",
+    "path": "/admin/brand/add",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\admin\\\\brand\\\\add.vue",
+    "chunkName": "pages/admin/brand/add",
+    "_name": "_3c236518"
+  },
+  {
+    "name": "admin-category-add",
+    "path": "/admin/category/add",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\admin\\\\category\\\\add.vue",
+    "chunkName": "pages/admin/category/add",
+    "_name": "_7c337ad9"
+  },
+  {
+    "name": "admin-notification-add",
+    "path": "/admin/notification/add",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\admin\\\\notification\\\\add.vue",
+    "chunkName": "pages/admin/notification/add",
+    "_name": "_2ef52a8c"
+  },
+  {
+    "name": "admin-product-add",
+    "path": "/admin/product/add",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\admin\\\\product\\\\add.vue",
+    "chunkName": "pages/admin/product/add",
+    "_name": "_db1a1ee8"
+  },
+  {
+    "name": "admin-submission-add",
+    "path": "/admin/submission/add",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\admin\\\\submission\\\\add.vue",
+    "chunkName": "pages/admin/submission/add",
+    "_name": "_5498f4cb"
+  },
+  {
+    "name": "customer-family-add",
+    "path": "/customer/family/add",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\customer\\\\family\\\\add.vue",
+    "chunkName": "pages/customer/family/add",
+    "_name": "_2e5b904a"
+  },
+  {
+    "name": "brand-my-product-review-detail-_id",
+    "path": "/brand/my-product/review/detail/:_id?",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\brand\\\\my-product\\\\review\\\\detail\\\\__id.vue",
+    "chunkName": "pages/brand/my-product/review/detail/__id",
+    "_name": "_1d59f038"
+  },
+  {
+    "name": "customer-feed-review-add-id",
+    "path": "/customer/feed/review/add/:id?",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\customer\\\\feed\\\\review\\\\add\\\\_id.vue",
+    "chunkName": "pages/customer/feed/review/add/_id",
+    "_name": "_742978b2"
+  },
+  {
+    "name": "customer-feed-review-detail-id",
+    "path": "/customer/feed/review/detail/:id?",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\customer\\\\feed\\\\review\\\\detail\\\\_id.vue",
+    "chunkName": "pages/customer/feed/review/detail/_id",
+    "_name": "_1ddd76a0"
+  },
+  {
+    "name": "customer-feed-review-edit-id",
+    "path": "/customer/feed/review/edit/:id?",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\customer\\\\feed\\\\review\\\\edit\\\\_id.vue",
+    "chunkName": "pages/customer/feed/review/edit/_id",
+    "_name": "_5d2a74c7"
+  },
+  {
+    "name": "admin-brand-edit-id",
+    "path": "/admin/brand/edit/:id?",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\admin\\\\brand\\\\edit\\\\_id.vue",
+    "chunkName": "pages/admin/brand/edit/_id",
+    "_name": "_259a9b83"
+  },
+  {
+    "name": "admin-category-edit-id",
+    "path": "/admin/category/edit/:id?",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\admin\\\\category\\\\edit\\\\_id.vue",
+    "chunkName": "pages/admin/category/edit/_id",
+    "_name": "_e1412db0"
+  },
+  {
+    "name": "admin-product-edit-id",
+    "path": "/admin/product/edit/:id?",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\admin\\\\product\\\\edit\\\\_id.vue",
+    "chunkName": "pages/admin/product/edit/_id",
+    "_name": "_1f22e6ca"
+  },
+  {
+    "name": "admin-product-send-id",
+    "path": "/admin/product/send/:id?",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\admin\\\\product\\\\send\\\\_id.vue",
+    "chunkName": "pages/admin/product/send/_id",
+    "_name": "_b1aa0e46"
+  },
+  {
+    "name": "admin-submission-detail-id",
+    "path": "/admin/submission/detail/:id?",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\admin\\\\submission\\\\detail\\\\_id.vue",
+    "chunkName": "pages/admin/submission/detail/_id",
+    "_name": "_8997829a"
+  },
+  {
+    "name": "admin-submission-edit-id",
+    "path": "/admin/submission/edit/:id?",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\admin\\\\submission\\\\edit\\\\_id.vue",
+    "chunkName": "pages/admin/submission/edit/_id",
+    "_name": "_c8abb4cc"
+  },
+  {
+    "name": "admin-user-detail-id",
+    "path": "/admin/user/detail/:id?",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\admin\\\\user\\\\detail\\\\_id.vue",
+    "chunkName": "pages/admin/user/detail/_id",
+    "_name": "_43579a94"
+  },
+  {
+    "name": "admin-user-family-detail-id",
+    "path": "/admin/user/family-detail/:id?",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\admin\\\\user\\\\family-detail\\\\_id.vue",
+    "chunkName": "pages/admin/user/family-detail/_id",
+    "_name": "_501d8ee5"
+  },
+  {
+    "name": "admin-user-family-id",
+    "path": "/admin/user/family/:id?",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\admin\\\\user\\\\family\\\\_id.vue",
+    "chunkName": "pages/admin/user/family/_id",
+    "_name": "_4df81ce1"
+  },
+  {
+    "name": "brand-my-product-detail-id",
+    "path": "/brand/my-product/detail/:id",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\brand\\\\my-product\\\\detail\\\\_id.vue",
+    "chunkName": "pages/brand/my-product/detail/_id",
+    "_name": "_9238018e"
+  },
+  {
+    "name": "brand-my-product-review-id",
+    "path": "/brand/my-product/review/:id",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\brand\\\\my-product\\\\review\\\\_id.vue",
+    "chunkName": "pages/brand/my-product/review/_id",
+    "_name": "_31e7cfdc"
+  },
+  {
+    "name": "customer-family-edit-id",
+    "path": "/customer/family/edit/:id?",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\customer\\\\family\\\\edit\\\\_id.vue",
+    "chunkName": "pages/customer/family/edit/_id",
+    "_name": "_4003e5d9"
+  },
+  {
+    "name": "customer-feed-detail-id",
+    "path": "/customer/feed/detail/:id?",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\customer\\\\feed\\\\detail\\\\_id.vue",
+    "chunkName": "pages/customer/feed/detail/_id",
+    "_name": "_022f1578"
+  },
+  {
+    "name": "auth-reset-password-id",
+    "path": "/auth/reset-password/:id?",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\auth\\\\reset-password\\\\_id.vue",
+    "chunkName": "pages/auth/reset-password/_id",
+    "_name": "_266e4084"
+  },
+  {
+    "name": "auth-verify-account-hash-id",
+    "path": "/auth/verify-account/:hash?/:id?",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\auth\\\\verify-account\\\\_hash\\\\_id.vue",
+    "chunkName": "pages/auth/verify-account/_hash/_id",
+    "_name": "_8f560ada"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "C:\\\\Users\\\\NabeelAhmedKhan\\\\Documents\\\\Work\\\\My Product Pix\\\\code\\\\My-Product-Pix-Web-Panel\\\\pages\\\\index.vue",
+    "chunkName": "pages/index",
+    "_name": "_1ea70ffd"
+  }
+]
