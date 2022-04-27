@@ -4,6 +4,6 @@ window.fbAsyncInit = function () {
     appId: '293954698861866',
     autoLogAppEvents: true,
     xfbml: true,
-    version: 'v10.0',
+    version: 'v12.0',
   })
 }
